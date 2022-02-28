@@ -5,10 +5,10 @@ import { OrderEntity } from './order.entity';
 
 @Injectable()
 export class OrderService {
-  constructor(
-    @InjectRepository(OrderEntity)
-    private readonly productRepository: Repository<OrderEntity>,
-  ) {}
+  // constructor(
+  //   @InjectRepository(OrderEntity)
+  //   private readonly productRepository: Repository<OrderEntity>,
+  // ) {}
 
   getAllOrders(): string {
     return 'all orders';
