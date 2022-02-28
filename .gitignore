@@ -3,6 +3,8 @@
 /node_modules
 /pgdata
 
+package-lock.json
+
 # Logs
 logs
 *.log
