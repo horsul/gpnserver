@@ -1,9 +1,15 @@
 import { OrderEntity } from '../order/order.entity';
 import { ProductEntity } from '../product/product.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  BaseEntity,
+} from 'typeorm';
 
 @Entity({ name: 'item' })
-export class ItemEntity {
+export class ItemEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

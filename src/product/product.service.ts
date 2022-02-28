@@ -7,7 +7,7 @@ export class ProductService {
     return await ProductEntity.find();
   }
 
-  getProduct(id: number): string {
-    return `product ${id}`;
+  async getProduct(id: number): Promise<ProductEntity> {
+    return await ProductEntity.findOne(id);
   }
 }

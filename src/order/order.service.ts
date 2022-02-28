@@ -1,20 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { OrderEntity } from './order.entity';
 
 @Injectable()
 export class OrderService {
-  // constructor(
-  //   @InjectRepository(OrderEntity)
-  //   private readonly productRepository: Repository<OrderEntity>,
-  // ) {}
-
-  getAllOrders(): string {
-    return 'all orders';
+  async getAllOrders(): Promise<OrderEntity[]> {
+    return await OrderEntity.find();
   }
 
-  getOrder(id: number): string {
-    return `order ${id}`;
+  async getOrder(id: number): Promise<OrderEntity> {
+    return await OrderEntity.findOne(id);
   }
 }

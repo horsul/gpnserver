@@ -6,18 +6,18 @@ import { ProductService } from './product.service';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Get()
-  async getAll(): Promise<ProductEntity[]> {
-    return await this.productService.getAllProducts();
-  }
-
   @Get(':id')
-  getProductParam(@Param() params): string {
-    return this.productService.getProduct(params.id);
+  async getProductParam(@Param() params): Promise<ProductEntity> {
+    return await this.productService.getProduct(params.id);
   }
 
   @Get('?')
-  getProductQuery(@Query('id') id: number) {
-    return this.productService.getProduct(id);
+  async getProductQuery(@Query('id') id: number): Promise<ProductEntity> {
+    return await this.productService.getProduct(id);
+  }
+
+  @Get()
+  getAll(): Promise<ProductEntity[]> {
+    return this.productService.getAllProducts();
   }
 }
