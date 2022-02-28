@@ -9,5 +9,7 @@ services:
       - POSTGRES_DB=${DB}
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     ports:
       - ${DB_PORT}:${DB_PORT}

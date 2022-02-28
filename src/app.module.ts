@@ -29,7 +29,6 @@ import { ItemController } from './item/item.controller';
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB'),
         port: config.get<number>('DB_PORT'),
-        // entities: [__dirname + 'dist/**/*.entity{.ts,.js}'],
         entities: [ProductEntity, OrderEntity, ItemEntity],
         synchronize: true,
         autoLoadEntities: true,
