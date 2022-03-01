@@ -6,18 +6,18 @@ import { OrderService } from './order.service';
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
+  @Get('all')
+  async getAll(): Promise<OrderEntity[]> {
+    return await this.orderService.getAllOrders();
+  }
+
   @Get(':id')
   async getProductParam(@Param() params): Promise<OrderEntity> {
     return await this.orderService.getOrder(params.id);
   }
 
-  @Get('?')
+  @Get()
   async getProductQuery(@Query('id') id: number): Promise<OrderEntity> {
     return await this.orderService.getOrder(id);
-  }
-
-  @Get()
-  async getAll(): Promise<OrderEntity[]> {
-    return await this.orderService.getAllOrders();
   }
 }

@@ -5,6 +5,7 @@ import {
   ParseIntPipe,
   Query,
 } from '@nestjs/common';
+import { ItemDto } from './item.dto';
 import { ItemEntity } from './item.entity';
 import { ItemService } from './item.service';
 
@@ -12,19 +13,14 @@ import { ItemService } from './item.service';
 export class ItemController {
   constructor(private readonly itemService: ItemService) {}
 
-  @Get('?')
+  @Get()
   async getItemsQuery(
-    @Query(
-      'product',
-      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
-    )
-    productId: number,
     @Query(
       'order',
       new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
     )
     orderId: number,
-  ): Promise<ItemEntity[]> {
-    return await this.itemService.getItems(productId, orderId);
+  ): Promise<ItemDto[]> {
+    return await this.itemService.getItems(orderId);
   }
 }
